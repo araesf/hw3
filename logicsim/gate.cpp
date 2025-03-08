@@ -102,6 +102,7 @@ Event* NotGate::update(uint64_t current_time) {
 		char in = w->getState();
 		if (in == 'X') {
 			state = 'X';
+			break;
 		}
 
 		else if (in == '1') {
@@ -111,12 +112,13 @@ Event* NotGate::update(uint64_t current_time) {
 		else if (in == '0') {
 			state = '1';
 		}
+	}
 
 		if (state != m_current_state) {
 			m_current_state = state;
 			uint64_t next = current_time + m_delay;
 			e = new Event {next, m_output, state};
 		}
-	}
+
 	return e;
 }

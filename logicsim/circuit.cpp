@@ -29,11 +29,11 @@ Circuit::~Circuit()
 
 void Circuit::test()
 {
-    m_wires.push_back(new Wire(0, "input A"));
+  m_wires.push_back(new Wire(0, "input A"));
 	m_wires.push_back(new Wire(1, "input B"));
 	m_wires.push_back(new Wire(2, "output"));
     
-    Gate* g = new And2Gate(m_wires[0], m_wires[1], m_wires[2]);
+  Gate* g = new And2Gate(m_wires[0], m_wires[1], m_wires[2]);
 	m_gates.push_back(g);
     
 	Event* e = new Event {0,m_wires[0],'0'};
@@ -113,8 +113,6 @@ bool Circuit::parse(const char* fname)
                 {
                   std::string s_in1;
                   getline(ss, s_in1, ',');
-                  std::string s_in2;
-                  getline(ss, s_in2, ',');
                   std::string s_output;
                   getline(ss, s_output, ',');
                   m_gates.push_back(new NotGate(m_wires[stoi(s_in1)], m_wires[stoi(s_output)]));
